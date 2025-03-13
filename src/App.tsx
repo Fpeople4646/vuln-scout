@@ -11,6 +11,10 @@ import SqlInjection from "./pages/SqlInjection";
 import XSS from "./pages/XSS";
 import NetworkScanner from "./pages/NetworkScanner";
 import DnsSpoofing from "./pages/DnsSpoofing";
+import MitM from "./pages/MitM";
+import PhishingSimulator from "./pages/PhishingSimulator";
+import WifiSecurity from "./pages/WifiSecurity";
+import IPTracking from "./pages/IPTracking";
 import Tools from "./pages/Tools";
 import NotFound from "./pages/NotFound";
 
@@ -30,6 +34,10 @@ const App = () => (
             <Route path="/xss" element={<XSS />} />
             <Route path="/network-scanner" element={<NetworkScanner />} />
             <Route path="/dns-spoofing" element={<DnsSpoofing />} />
+            <Route path="/mitm" element={<MitM />} />
+            <Route path="/phishing" element={<PhishingSimulator />} />
+            <Route path="/wifi-security" element={<WifiSecurity />} />
+            <Route path="/ip-tracking" element={<IPTracking />} />
             <Route path="/tools" element={<Tools />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
