@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import { Link } from 'react-router-dom';
 
 const Tools = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -63,7 +64,8 @@ const Tools = () => {
       description: 'Test DNS security by attempting to spoof DNS responses',
       icon: <Globe className="w-5 h-5" />,
       category: 'network',
-      status: 'coming_soon'
+      status: 'available',
+      link: '/dns-spoofing'
     },
     {
       id: 'password',
@@ -98,12 +100,13 @@ const Tools = () => {
       status: 'coming_soon'
     },
     {
-      id: 'vuln-scan',
-      name: 'Vulnerability Scanner',
-      description: 'Comprehensive scanner for common security vulnerabilities',
+      id: 'network-scanner',
+      name: 'Network Scanner',
+      description: 'Scan networks for open ports, services, and vulnerabilities',
       icon: <Search className="w-5 h-5" />,
-      category: 'recon',
-      status: 'coming_soon'
+      category: 'network',
+      status: 'available',
+      link: '/network-scanner'
     },
     {
       id: 'mobile-sec',
@@ -115,19 +118,30 @@ const Tools = () => {
     },
     {
       id: 'sql-adv',
-      name: 'Advanced SQL Injection',
-      description: 'Comprehensive SQL injection testing with time-based and blind techniques',
+      name: 'SQL Injection',
+      description: 'Test for SQL injection vulnerabilities in web applications',
       icon: <Database className="w-5 h-5" />,
       category: 'web',
-      status: 'coming_soon'
+      status: 'available',
+      link: '/sql-injection'
     },
     {
       id: 'xss-adv',
-      name: 'Advanced XSS Suite',
-      description: 'Complete XSS testing toolkit with DOM, reflected and stored XSS testing',
+      name: 'XSS Testing',
+      description: 'Test for Cross-Site Scripting vulnerabilities in web applications',
       icon: <Code className="w-5 h-5" />,
       category: 'web',
-      status: 'coming_soon'
+      status: 'available',
+      link: '/xss'
+    },
+    {
+      id: 'bruteforce',
+      name: 'Brute Force',
+      description: 'Test authentication systems by attempting to log in with various password combinations',
+      icon: <Key className="w-5 h-5" />,
+      category: 'web',
+      status: 'available',
+      link: '/bruteforce'
     },
   ];
   
@@ -187,16 +201,31 @@ const Tools = () => {
                     Coming Soon
                   </span>
                 )}
+                {tool.status === 'available' && (
+                  <span className="text-xs px-2 py-1 bg-security-success/10 text-security-success rounded-full">
+                    Available
+                  </span>
+                )}
               </div>
               <CardDescription>{tool.description}</CardDescription>
             </CardHeader>
             <CardContent>
-              <Button 
-                onClick={notifyComingSoon}
-                className="w-full bg-security-secondary hover:bg-security-highlight text-security-foreground"
-              >
-                Open Tool
-              </Button>
+              {tool.status === 'available' && tool.link ? (
+                <Link to={tool.link}>
+                  <Button 
+                    className="w-full bg-security-accent hover:bg-security-accent/80 text-security"
+                  >
+                    Open Tool
+                  </Button>
+                </Link>
+              ) : (
+                <Button 
+                  onClick={notifyComingSoon}
+                  className="w-full bg-security-secondary hover:bg-security-highlight text-security-foreground"
+                >
+                  Open Tool
+                </Button>
+              )}
             </CardContent>
           </Card>
         ))}

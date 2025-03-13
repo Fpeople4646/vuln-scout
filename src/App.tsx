@@ -9,6 +9,8 @@ import Index from "./pages/Index";
 import BruteForce from "./pages/BruteForce";
 import SqlInjection from "./pages/SqlInjection";
 import XSS from "./pages/XSS";
+import NetworkScanner from "./pages/NetworkScanner";
+import DnsSpoofing from "./pages/DnsSpoofing";
 import Tools from "./pages/Tools";
 import NotFound from "./pages/NotFound";
 
@@ -26,6 +28,8 @@ const App = () => (
             <Route path="/bruteforce" element={<BruteForce />} />
             <Route path="/sql-injection" element={<SqlInjection />} />
             <Route path="/xss" element={<XSS />} />
+            <Route path="/network-scanner" element={<NetworkScanner />} />
+            <Route path="/dns-spoofing" element={<DnsSpoofing />} />
             <Route path="/tools" element={<Tools />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
